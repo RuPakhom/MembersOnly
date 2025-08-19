@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+:root {
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --panel-2: #f3f5fb;
+    --text: #1a1f2b;
+    --muted: #5b6577;
+    --border: #e5e8f0;
+    --brand: #3d7bfd;
+    --danger: #c0392b;
+    --danger-hover: #e74c3c;
+    --radius: 12px;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08)
+}
+
+body{
+    margin:0;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.container{
+    margin-inline: auto;
+    padding: 1rem;
+    max-width: 1100px;
+}
+
+.page-title {
+    margin: 32px 0 16px;
+    font-size: clamp(24px, 2.5vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.messages{
+    display:grid;
+    gap:18px;
+    margin-bottom: 40px;
+}
+
+.message-card{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding:18px;
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+}
+
+.message-title{
+    margin:0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.message-body{
+    line-height: 1.5;
+    color: var(--text);
+    opacity: 0.95;
+}
+
+.message-footer{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--muted)
+}
+
+.message-footer .meta {
+    display:flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.author-name {
+    font-weight: 500;
+}
+
+.message-footer time{
+    font-size: 13px;
+    color: var(--muted)
+}
+
+.message-actions{
+    margin-top: auto;
+    text-align: right;
+}
+
+.delete-link{
+    display: inline-block;
+    background: var(--danger);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.delete-link:hover{
+    background: var(--danger-hover);
+}
+
+.add-link{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size:15px;
+    font-weight:600;
+    text-decoration: none;
+    color:#fff;
+    background: linear-gradient(135deg, #3d7bfd, #2e69ef);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.add-link:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}

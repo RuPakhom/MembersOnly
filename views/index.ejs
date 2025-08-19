@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <%- include('components/header') %>
+
+    <main class="container">
+        <%if(user){%>
+            <a href="/addmessage" class="add-link">Add message</a>
+        <%}%>
+        <h1 class="page-title">All Messages</h1>
+
+        <section class="messages" aria-live="polite">
+            <% messages.forEach(message => { %>
+            <article class="message-card">
+                <h2 class="message-title"><%= message.title %></h2>
+
+                <div class="message-body">
+                    <%= message.text %>
+                </div>
+
+                <div class="message-footer">
+                    <div class="meta">
+                        <span class="author-name"><%= locals.user?.membership_status ? message.author : "(anonymous)" %></span>
+                        <time datetime="<%= new Date(message.created_at) %>"><%= message.created_at %></time>
+                    </div>
+                </div>
+                <% if(locals.user && locals.user.is_admin) { %>
+                    <div class="message-actions">
+                    <a 
+                    href="/messages/<%= message.id %>/delete" 
+                    class="delete-link" 
+                    onclick="return confirm('Detele this message?')"
+                    >Delete</a>
+                </div>
+                <%}%>
+            </article>
+           <% }) %>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="header.css">
+
+</head>
+<body>
+    <%- include('components/header') %>
+    <main class="container">
+         <h1 class="header-page-title">Add New Message</h1>
+        <section class="form-card">
+
+                <form action="/addmessage" method="post" novalidate>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label for="title">Title <span class="req">*</span></label>
+                        <input class="input" type="text" name="title" id="title" value="<%= (body && body.title) || "" %>" placeholder="Short description">
+                        <% if(locals.errorsMap && locals.errorsMap.title) {%>
+                            <div class="field-error"><%=locals.errorsMap.title.msg%></div>
+                        <%}%>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="message">Message</label>
+                        <textarea 
+                          name="message"
+                          id="message"
+                          class="textarea"
+                          rows="4"
+                          placeholder="Your message"
+                          ><%= (body && body.message) || "" %></textarea>
+                        <% if(locals.errorsMap && locals.errorsMap.message) {%>
+                        <div class="field-error"><%= errorsMap.message.msg %></div>
+                        <% } %>
+                        </div>
+
+            </div>
+                <div class="form-actions"><button type="submit" class="btn">Submit</button></div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

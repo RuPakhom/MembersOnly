@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <%- include('components/header') %>
+
+    <main class="container">
+         <h1 class="header-page-title">Login</h1>
+        <% if(locals.messages && locals.messages.length !== 0){%>
+            <div class="alert alert-error">
+                <ul>
+                        <li><%= locals.messages %></li>
+                </ul>
+            </div>
+        <% } %>
+        <section class="form-card">
+                <form action="/login" method="post" novalidate>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label for="username">Username</label>
+                        <input class="input" type="text" name="username" id="username" value="<%= (body && body.username) || "" %>">
+                        <% if(locals.errorsMap && locals.errorsMap.username) {%>
+                            <div class="field-error"><%=locals.errorsMap.username.msg%></div>
+                        <%}%>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="password">Password </label>
+                        <input class="input" type="password" name="password" id="password">
+                        <% if(locals.errorsMap && locals.errorsMap.password) {%>
+                            <div class="field-error"><%=locals.errorsMap.password.msg%></div>
+                        <%}%>
+                    </div>
+            </div>
+                <div class="form-actions"><button type="submit" class="btn">Login</button></div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

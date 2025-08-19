@@ -1,0 +1,21 @@
+<header class="site-header">
+    <div class="header-container header-inner">
+
+            <div class="logo"><a href="/">OnlyMembers</a></div>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <% if(!user){ %>
+                <li><a href="/signup">Signup</a></li>
+                <li><a href="/login">Login</a></li>
+                <%} else{%>
+                <li class="nav-user"><%= user.username %></li>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/membership">Get Membership</a></li>
+                <%}%>
+
+            </ul>
+        </nav>
+    </div>
+
+</header>
